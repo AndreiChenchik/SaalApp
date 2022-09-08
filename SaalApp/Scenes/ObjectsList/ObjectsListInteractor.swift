@@ -31,7 +31,7 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     func displayObjects(search: String?) {
         let filter: (Object) -> Bool
         if let search = search?.trimmingCharacters(in: .whitespacesAndNewlines),
-           search.isEmpty {
+           !search.isEmpty {
             filter = { object in
                 let prompt = search
                     .lowercased()
