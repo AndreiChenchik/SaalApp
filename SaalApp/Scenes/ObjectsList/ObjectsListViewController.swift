@@ -8,9 +8,11 @@ protocol ObjectsListBusinessLogic {
 }
 
 final class ObjectsListViewController: UIViewController {
-    private var interactor: ObjectsListBusinessLogic
+    typealias Interactor = ObjectsListBusinessLogic & UISearchResultsUpdating
 
-    init(interactor: ObjectsListBusinessLogic) {
+    private var interactor: Interactor
+
+    init(interactor: Interactor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,14 +41,14 @@ final class ObjectsListViewController: UIViewController {
 
     enum Cell: String { case id }
     private let tableView: UITableView = {
-        let table = UITableView()
+        let tableView = UITableView(frame: .zero, style: .plain)
 
-        table.register(
+        tableView.register(
             UITableViewCell.self,
             forCellReuseIdentifier: Cell.id.rawValue
         )
 
-        return table
+        return tableView
     }()
 
     // MARK: - DataSource
@@ -99,6 +101,21 @@ final class ObjectsListViewController: UIViewController {
 
         return cell
     }
+
+    // MARK: - SearchController
+
+    private lazy var searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+
+        controller.obscuresBackgroundDuringPresentation = false
+        controller.searchBar.placeholder = "Filter objects..."
+        controller.searchBar.sizeToFit()
+        controller.searchBar.searchBarStyle = .prominent
+
+        controller.searchResultsUpdater = interactor
+
+        return controller
+    }()
 }
 
 // MARK: - LifeCycle
@@ -118,6 +135,7 @@ extension ObjectsListViewController {
         tableView.frame = view.bounds
         navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.leftBarButtonItem = leftBarButton
+        navigationItem.searchController = searchController
     }
 }
 

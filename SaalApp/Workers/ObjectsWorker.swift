@@ -26,9 +26,7 @@ struct ObjectsWorker {
     ) {
         let filter: (Object) -> Bool
         if let search = search {
-            filter = { object in
-                object.name.contains(search)
-            }
+            filter = { $0.name.lowercased().contains(search.lowercased()) }
         } else {
             filter = { _ in true }
         }

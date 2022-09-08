@@ -4,7 +4,7 @@ protocol ObjectsListPresentationLogic {
     func present(response: ObjectsList.GetResponse)
 }
 
-final class ObjectsListInteractor {
+final class ObjectsListInteractor: NSObject {
     let presenter: ObjectsListPresentationLogic
     let objectsWorker: ObjectsWorker
 
@@ -41,6 +41,21 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     func deleteObject(id: UUID) {
         objectsWorker.deleteObject(id: id) { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
+        }
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension ObjectsListInteractor: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if
+            let prompt = searchController.searchBar.text,
+            !prompt.isEmpty
+        {
+            displayObjects(search: prompt)
+        } else {
+            displayObjects(search: nil)
         }
     }
 }
