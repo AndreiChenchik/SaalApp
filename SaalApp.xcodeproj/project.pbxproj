@@ -9,20 +9,37 @@
 /* Begin PBXBuildFile section */
 		384BD40828C9E4FF009C4922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40728C9E4FF009C4922 /* AppDelegate.swift */; };
 		384BD40A28C9E4FF009C4922 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40928C9E4FF009C4922 /* SceneDelegate.swift */; };
-		384BD40C28C9E4FF009C4922 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40B28C9E4FF009C4922 /* ViewController.swift */; };
+		384BD40C28C9E4FF009C4922 /* ObjectsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40B28C9E4FF009C4922 /* ObjectsListViewController.swift */; };
 		384BD41128C9E501009C4922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384BD41028C9E501009C4922 /* Assets.xcassets */; };
 		384BD41428C9E501009C4922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384BD41228C9E501009C4922 /* LaunchScreen.storyboard */; };
+		384BD41F28CA00AD009C4922 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD41E28CA00AD009C4922 /* Object.swift */; };
+		384BD42128CA0137009C4922 /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD42028CA0137009C4922 /* ObjectType.swift */; };
+		384BD42328CA0F79009C4922 /* ObjectsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD42228CA0F79009C4922 /* ObjectsListPresenter.swift */; };
+		38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */; };
+		38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */; };
+		38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24128CA39040095715E /* ObjectsListModels.swift */; };
+		38A4F24628CA5A670095715E /* ObjectsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24528CA5A670095715E /* ObjectsWorker.swift */; };
+		38A4F24828CA5C7D0095715E /* InMemoryObjectsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24728CA5C7D0095715E /* InMemoryObjectsRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		384BD40428C9E4FF009C4922 /* SaalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		384BD40728C9E4FF009C4922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		384BD40928C9E4FF009C4922 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		384BD40B28C9E4FF009C4922 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		384BD40B28C9E4FF009C4922 /* ObjectsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListViewController.swift; sourceTree = "<group>"; };
 		384BD41028C9E501009C4922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		384BD41328C9E501009C4922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		384BD41528C9E501009C4922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		384BD41B28C9EDCF009C4922 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		384BD41D28C9F7A8009C4922 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		384BD41E28CA00AD009C4922 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
+		384BD42028CA0137009C4922 /* ObjectType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectType.swift; sourceTree = "<group>"; };
+		384BD42228CA0F79009C4922 /* ObjectsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListPresenter.swift; sourceTree = "<group>"; };
+		38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractor.swift; sourceTree = "<group>"; };
+		38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListGraph.swift; sourceTree = "<group>"; };
+		38A4F24128CA39040095715E /* ObjectsListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListModels.swift; sourceTree = "<group>"; };
+		38A4F24528CA5A670095715E /* ObjectsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsWorker.swift; sourceTree = "<group>"; };
+		38A4F24728CA5C7D0095715E /* InMemoryObjectsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryObjectsRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +56,7 @@
 		384BD3FB28C9E4FF009C4922 = {
 			isa = PBXGroup;
 			children = (
+				384BD41D28C9F7A8009C4922 /* .gitignore */,
 				384BD41B28C9EDCF009C4922 /* README.md */,
 				384BD40628C9E4FF009C4922 /* SaalApp */,
 				384BD40528C9E4FF009C4922 /* Products */,
@@ -56,14 +74,62 @@
 		384BD40628C9E4FF009C4922 /* SaalApp */ = {
 			isa = PBXGroup;
 			children = (
+				38A4F24428CA5A540095715E /* Workers */,
+				38A4F24328CA57CB0095715E /* Services */,
+				38A4F23A28CA352E0095715E /* Models */,
+				38A4F23928CA351B0095715E /* Scenes */,
 				384BD40728C9E4FF009C4922 /* AppDelegate.swift */,
 				384BD40928C9E4FF009C4922 /* SceneDelegate.swift */,
-				384BD40B28C9E4FF009C4922 /* ViewController.swift */,
 				384BD41028C9E501009C4922 /* Assets.xcassets */,
 				384BD41228C9E501009C4922 /* LaunchScreen.storyboard */,
 				384BD41528C9E501009C4922 /* Info.plist */,
 			);
 			path = SaalApp;
+			sourceTree = "<group>";
+		};
+		38A4F23928CA351B0095715E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F23C28CA358C0095715E /* ObjectsList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		38A4F23A28CA352E0095715E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				384BD41E28CA00AD009C4922 /* Object.swift */,
+				384BD42028CA0137009C4922 /* ObjectType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		38A4F23C28CA358C0095715E /* ObjectsList */ = {
+			isa = PBXGroup;
+			children = (
+				384BD40B28C9E4FF009C4922 /* ObjectsListViewController.swift */,
+				384BD42228CA0F79009C4922 /* ObjectsListPresenter.swift */,
+				38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */,
+				38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */,
+				38A4F24128CA39040095715E /* ObjectsListModels.swift */,
+			);
+			path = ObjectsList;
+			sourceTree = "<group>";
+		};
+		38A4F24328CA57CB0095715E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F24728CA5C7D0095715E /* InMemoryObjectsRepository.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		38A4F24428CA5A540095715E /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F24528CA5A670095715E /* ObjectsWorker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,8 +225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				384BD40C28C9E4FF009C4922 /* ViewController.swift in Sources */,
+				38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */,
+				38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */,
+				384BD42128CA0137009C4922 /* ObjectType.swift in Sources */,
+				384BD42328CA0F79009C4922 /* ObjectsListPresenter.swift in Sources */,
+				384BD40C28C9E4FF009C4922 /* ObjectsListViewController.swift in Sources */,
 				384BD40828C9E4FF009C4922 /* AppDelegate.swift in Sources */,
+				38A4F24628CA5A670095715E /* ObjectsWorker.swift in Sources */,
+				38A4F24828CA5C7D0095715E /* InMemoryObjectsRepository.swift in Sources */,
+				38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */,
+				384BD41F28CA00AD009C4922 /* Object.swift in Sources */,
 				384BD40A28C9E4FF009C4922 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +377,7 @@
 				DEVELOPMENT_TEAM = UM3QPHF8E3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaalApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Saal App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Objects App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -336,7 +410,7 @@
 				DEVELOPMENT_TEAM = UM3QPHF8E3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaalApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Saal App";
+				INFOPLIST_KEY_CFBundleDisplayName = "Objects App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
