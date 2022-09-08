@@ -23,6 +23,7 @@
 		384BD41328C9E501009C4922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		384BD41528C9E501009C4922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		384BD41B28C9EDCF009C4922 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		384BD41D28C9F7A8009C4922 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,7 @@
 		384BD3FB28C9E4FF009C4922 = {
 			isa = PBXGroup;
 			children = (
+				384BD41D28C9F7A8009C4922 /* .gitignore */,
 				384BD41B28C9EDCF009C4922 /* README.md */,
 				384BD40628C9E4FF009C4922 /* SaalApp */,
 				384BD40528C9E4FF009C4922 /* Products */,
