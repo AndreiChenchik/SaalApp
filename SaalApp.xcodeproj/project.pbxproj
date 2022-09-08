@@ -10,7 +10,6 @@
 		384BD40828C9E4FF009C4922 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40728C9E4FF009C4922 /* AppDelegate.swift */; };
 		384BD40A28C9E4FF009C4922 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40928C9E4FF009C4922 /* SceneDelegate.swift */; };
 		384BD40C28C9E4FF009C4922 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD40B28C9E4FF009C4922 /* ViewController.swift */; };
-		384BD40F28C9E4FF009C4922 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384BD40D28C9E4FF009C4922 /* Main.storyboard */; };
 		384BD41128C9E501009C4922 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384BD41028C9E501009C4922 /* Assets.xcassets */; };
 		384BD41428C9E501009C4922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384BD41228C9E501009C4922 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		384BD40728C9E4FF009C4922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		384BD40928C9E4FF009C4922 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		384BD40B28C9E4FF009C4922 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		384BD40E28C9E4FF009C4922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		384BD41028C9E501009C4922 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		384BD41328C9E501009C4922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		384BD41528C9E501009C4922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,7 +57,6 @@
 				384BD40728C9E4FF009C4922 /* AppDelegate.swift */,
 				384BD40928C9E4FF009C4922 /* SceneDelegate.swift */,
 				384BD40B28C9E4FF009C4922 /* ViewController.swift */,
-				384BD40D28C9E4FF009C4922 /* Main.storyboard */,
 				384BD41028C9E501009C4922 /* Assets.xcassets */,
 				384BD41228C9E501009C4922 /* LaunchScreen.storyboard */,
 				384BD41528C9E501009C4922 /* Info.plist */,
@@ -127,7 +124,6 @@
 			files = (
 				384BD41428C9E501009C4922 /* LaunchScreen.storyboard in Resources */,
 				384BD41128C9E501009C4922 /* Assets.xcassets in Resources */,
-				384BD40F28C9E4FF009C4922 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +143,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		384BD40D28C9E4FF009C4922 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				384BD40E28C9E4FF009C4922 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		384BD41228C9E501009C4922 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -290,11 +278,13 @@
 				DEVELOPMENT_TEAM = UM3QPHF8E3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaalApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Saal App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +292,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.chenchik.SaalApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -318,11 +311,13 @@
 				DEVELOPMENT_TEAM = UM3QPHF8E3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SaalApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Saal App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +325,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = me.chenchik.SaalApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
