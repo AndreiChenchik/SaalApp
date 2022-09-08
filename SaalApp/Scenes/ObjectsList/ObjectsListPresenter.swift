@@ -29,6 +29,11 @@ extension ObjectsListPresenter: ObjectsListPresentationLogic {
     }
 
     private func convert(model: Object) -> CellViewModel {
-        CellViewModel(id: model.id, name: model.name)
+        let title = "\(model.type.name): \(model.name)"
+        let description = "\(model.description)"
+
+        return CellViewModel(
+            id: model.id, title: title, description: description
+        )
     }
 }

@@ -39,12 +39,24 @@ final class ObjectsListViewController: UIViewController {
 
     // MARK: - TableView
 
+    final class TableCell: UITableViewCell {
+        override init(
+            style: UITableViewCell.CellStyle, reuseIdentifier: String?
+        ) {
+            super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        }
+
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+
     enum Cell: String { case id }
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
 
         tableView.register(
-            UITableViewCell.self,
+            TableCell.self,
             forCellReuseIdentifier: Cell.id.rawValue
         )
 
@@ -56,7 +68,7 @@ final class ObjectsListViewController: UIViewController {
     typealias Section = ObjectsList.ListSection
     typealias CellViewModel = ObjectsList.CellViewModel
     typealias DataSource = UITableViewDiffableDataSource<Section, CellViewModel>
-    class TableDataSource: DataSource {
+    final class TableDataSource: DataSource {
         private var interactor: ObjectsListBusinessLogic
 
         init(
@@ -97,7 +109,8 @@ final class ObjectsListViewController: UIViewController {
             withIdentifier: Cell.id.rawValue, for: indexPath
         )
 
-        cell.textLabel?.text = viewModel.name
+        cell.textLabel?.text = viewModel.title
+        cell.detailTextLabel?.text = viewModel.description
 
         return cell
     }

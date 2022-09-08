@@ -11,7 +11,8 @@ enum ObjectsList {
 
     struct CellViewModel: Hashable, Identifiable {
         let id: UUID
-        let name: String
+        let title: String
+        let description: String
     }
 
     enum ListSection { case main }

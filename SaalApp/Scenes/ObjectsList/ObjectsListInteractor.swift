@@ -29,7 +29,28 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     }
 
     func displayObjects(search: String?) {
-        objectsWorker.fetchObjects(search: search) { [weak self] objects in
+        let filter: (Object) -> Bool
+        if let search = search?.trimmingCharacters(in: .whitespacesAndNewlines),
+           search.isEmpty {
+            filter = { object in
+                let prompt = search
+                    .lowercased()
+
+                let name = object.name.lowercased()
+                let description = object.description.lowercased()
+                let cellTitle = "\(object.type.name): \(name)"
+
+                return (
+                    name.contains(prompt)
+                    || description.contains(prompt)
+                    || cellTitle.contains(prompt)
+                )
+            }
+        } else {
+            filter = { _ in true }
+        }
+
+        objectsWorker.fetchObjects(filter: filter) { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
         }
     }

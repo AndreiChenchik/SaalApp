@@ -21,16 +21,9 @@ struct ObjectsWorker {
     let objectsRepository: ObjectsRepository
 
     func fetchObjects(
-        search: String?,
+        filter: @escaping (Object) -> Bool = {_ in true},
         completion: @escaping ([Object]) -> Void
     ) {
-        let filter: (Object) -> Bool
-        if let search = search {
-            filter = { $0.name.lowercased().contains(search.lowercased()) }
-        } else {
-            filter = { _ in true }
-        }
-
         objectsRepository.fetchObjects(filter: filter) { result in
             switch result {
             case .success(let objects):
@@ -50,7 +43,7 @@ struct ObjectsWorker {
             switch result {
             case .success(let isDeleted):
                 if isDeleted {
-                    fetchObjects(search: nil, completion: completion)
+                    fetchObjects(completion: completion)
                 }
             case .failure:
                 break
@@ -68,7 +61,7 @@ struct ObjectsWorker {
         objectsRepository.addObject(object) { result in
             switch result {
             case .success:
-                fetchObjects(search: nil, completion: completion)
+                fetchObjects(completion: completion)
             case .failure:
                 break
             }
