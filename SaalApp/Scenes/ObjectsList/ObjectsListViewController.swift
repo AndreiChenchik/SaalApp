@@ -150,6 +150,10 @@ extension ObjectsListViewController {
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.searchController = searchController
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        interactor.displayObjects(search: nil)
+    }
 }
 
 // MARK: - UI Events
