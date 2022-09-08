@@ -15,6 +15,8 @@ The following functions should be available
 - All data must be serializable/storable. For this use a persistent storage.
 
 ### GUI
+![image](https://user-images.githubusercontent.com/217896/189094909-a2070408-3a8b-4bd7-ae9b-36f5ac1f479c.png)
+
 The GUI does not have to look exactly like this. Native components and styles are preferred.
 
 ### Further information
