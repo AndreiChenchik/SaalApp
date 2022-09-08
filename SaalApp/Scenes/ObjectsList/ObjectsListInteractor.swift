@@ -5,18 +5,15 @@ protocol ObjectsListPresentationLogic {
 }
 
 final class ObjectsListInteractor {
-    var objects = [
-        Object(
-            name: "test",
-            description: "test",
-            type: ObjectType(name: "test2")
-        )
-    ]
-
     let presenter: ObjectsListPresentationLogic
+    let objectsWorker: ObjectsWorker
 
-    init(presenter: ObjectsListPresentationLogic) {
+    init(
+        presenter: ObjectsListPresentationLogic,
+        objectsWorker: ObjectsWorker
+    ) {
         self.presenter = presenter
+        self.objectsWorker = objectsWorker
     }
 }
 
@@ -26,19 +23,15 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     typealias Response = ObjectsList.GetResponse
 
     func addObject() {
-        objects.append(
-            Object(
-                name: "test3",
-                description: "test",
-                type: ObjectType(name: "teasdasd")
-            )
-        )
-
-        presenter.present(response: Response(objects: objects))
+        objectsWorker.fetchObjects(search: nil) { [weak self] objects in
+            self?.presenter.present(response: Response(objects: objects))
+        }
     }
 
     func displayObjects(search: String?) {
-        presenter.present(response: Response(objects: objects))
+        objectsWorker.fetchObjects(search: search) { [weak self] objects in
+            self?.presenter.present(response: Response(objects: objects))
+        }
     }
 
     func openObject(id: UUID) {
@@ -46,7 +39,8 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     }
 
     func deleteObject(id: UUID) {
-        objects.removeAll { $0.id == id }
-        presenter.present(response: Response(objects: objects))
+        objectsWorker.deleteObject(id: id) { [weak self] objects in
+            self?.presenter.present(response: Response(objects: objects))
+        }
     }
 }

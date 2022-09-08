@@ -1,6 +1,6 @@
 import Foundation
 
-struct Object: Hashable, Identifiable {
+struct Object: Identifiable {
     var id = UUID()
 
     var name: String

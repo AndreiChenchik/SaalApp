@@ -13,9 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: scene)
 
-        let presenter = ObjectsListPresenter()
-        let rootViewController = ObjectsListGraph.getVC()
-        presenter.viewController = rootViewController
+        let objectsRepository = InMemoryObjectsRepository()
+        let rootViewController = ObjectsListGraph.getVC(
+            objectsRepository: objectsRepository
+        )
 
         window.rootViewController = UINavigationController(
             rootViewController: rootViewController

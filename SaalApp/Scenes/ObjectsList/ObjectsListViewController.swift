@@ -36,7 +36,7 @@ final class ObjectsListViewController: UIViewController {
     )
 
     // MARK: - TableView
-    
+
     enum Cell: String { case id }
     private let tableView: UITableView = {
         let table = UITableView()
@@ -79,6 +79,9 @@ final class ObjectsListViewController: UIViewController {
         ) {
             if editingStyle == .delete {
                 if let item = itemIdentifier(for: indexPath) {
+                    var snapshot = self.snapshot()
+                    snapshot.deleteItems([item])
+                    apply(snapshot)
                     interactor.deleteObject(id: item.id)
                 }
             }

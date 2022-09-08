@@ -18,6 +18,8 @@
 		38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */; };
 		38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */; };
 		38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24128CA39040095715E /* ObjectsListModels.swift */; };
+		38A4F24628CA5A670095715E /* ObjectsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24528CA5A670095715E /* ObjectsWorker.swift */; };
+		38A4F24828CA5C7D0095715E /* InMemoryObjectsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24728CA5C7D0095715E /* InMemoryObjectsRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractor.swift; sourceTree = "<group>"; };
 		38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListGraph.swift; sourceTree = "<group>"; };
 		38A4F24128CA39040095715E /* ObjectsListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListModels.swift; sourceTree = "<group>"; };
+		38A4F24528CA5A670095715E /* ObjectsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsWorker.swift; sourceTree = "<group>"; };
+		38A4F24728CA5C7D0095715E /* InMemoryObjectsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InMemoryObjectsRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 		384BD40628C9E4FF009C4922 /* SaalApp */ = {
 			isa = PBXGroup;
 			children = (
+				38A4F24428CA5A540095715E /* Workers */,
+				38A4F24328CA57CB0095715E /* Services */,
 				38A4F23A28CA352E0095715E /* Models */,
 				38A4F23928CA351B0095715E /* Scenes */,
 				384BD40728C9E4FF009C4922 /* AppDelegate.swift */,
@@ -108,6 +114,22 @@
 				38A4F24128CA39040095715E /* ObjectsListModels.swift */,
 			);
 			path = ObjectsList;
+			sourceTree = "<group>";
+		};
+		38A4F24328CA57CB0095715E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F24728CA5C7D0095715E /* InMemoryObjectsRepository.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		38A4F24428CA5A540095715E /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F24528CA5A670095715E /* ObjectsWorker.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +231,8 @@
 				384BD42328CA0F79009C4922 /* ObjectsListPresenter.swift in Sources */,
 				384BD40C28C9E4FF009C4922 /* ObjectsListViewController.swift in Sources */,
 				384BD40828C9E4FF009C4922 /* AppDelegate.swift in Sources */,
+				38A4F24628CA5A670095715E /* ObjectsWorker.swift in Sources */,
+				38A4F24828CA5C7D0095715E /* InMemoryObjectsRepository.swift in Sources */,
 				38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */,
 				384BD41F28CA00AD009C4922 /* Object.swift in Sources */,
 				384BD40A28C9E4FF009C4922 /* SceneDelegate.swift in Sources */,
