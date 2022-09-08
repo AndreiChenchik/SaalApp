@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  SaalApp
-//
-//  Created by Andrei Chenchik on 8/9/22.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

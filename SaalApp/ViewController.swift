@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  SaalApp
-//
-//  Created by Andrei Chenchik on 8/9/22.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
