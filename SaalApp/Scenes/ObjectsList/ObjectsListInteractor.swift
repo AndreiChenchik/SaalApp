@@ -23,7 +23,7 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     typealias Response = ObjectsList.GetResponse
 
     func addObject() {
-        objectsWorker.fetchObjects(search: nil) { [weak self] objects in
+        objectsWorker.addObject { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
         }
     }
