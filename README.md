@@ -1,6 +1,7 @@
 # SaalApp
 Take home assignment for Saal Digital
 
+![Simulator Screen Recording - iPhone 12 Pro 15 5 - 2022-09-09 at 11 13 47](https://user-images.githubusercontent.com/217896/189315909-81d3135a-4542-40a6-af35-0068fa33655f.gif)
 
 ## Task description
 Please imagine that you are working for an international team and you are asked to develop an object management app whose requirements are explained below. When implementing the requirements below, please bear in mind that even though it is a simple app, this can be reviewed or further developed by other colleagues. 
