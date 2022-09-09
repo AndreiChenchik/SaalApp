@@ -29,8 +29,22 @@ extension ObjectViewInteractor: ObjectViewBusinessLogic {
     func displayObject(id: UUID) {
         let filter: (Object) -> Bool = { $0.id == id }
         objectsWorker.fetchObjects(filter: filter) { [weak self] objects in
+            guard let self = self else { return }
+
             if let object = objects.first {
-                self?.presenter.present(response: Response(object: object))
+                let relationFilter: (Object) -> Bool = {
+                    object.relatedObjects.contains($0.id)
+                }
+
+                self.objectsWorker.fetchObjects(
+                    filter: relationFilter
+                ) { [weak self] relatedObjects in
+                    let response = Response(
+                        object: object, relatedObjects: relatedObjects
+                    )
+
+                    self?.presenter.present(response: response)
+                }
             }
         }
     }

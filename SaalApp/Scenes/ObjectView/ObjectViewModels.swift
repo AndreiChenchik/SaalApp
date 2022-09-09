@@ -7,6 +7,7 @@ enum ObjectView {
 
     struct GetResponse {
         let object: Object
+        var relatedObjects = [Object]()
     }
 
     struct RelationViewModel: Hashable, Identifiable {

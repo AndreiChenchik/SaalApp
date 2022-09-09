@@ -17,10 +17,16 @@ extension ObjectViewPresenter: ObjectViewPresentationLogic {
 
     func present(response: ObjectView.GetResponse) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellViewModel>()
-        snapshot.appendSections([.form])
 
+        snapshot.appendSections([.form])
         let formCells = convert(model: response.object)
         snapshot.appendItems(formCells)
+
+        if !response.relatedObjects.isEmpty {
+            snapshot.appendSections([.relation])
+            let relationCells = convert(model: response.relatedObjects)
+            snapshot.appendItems(relationCells)
+        }
 
         let viewModel = ViewModel(snapshot: snapshot)
 
@@ -56,5 +62,19 @@ extension ObjectViewPresenter: ObjectViewPresentationLogic {
         }
 
         return formFields
+    }
+
+    private func convert(model: [Object]) -> [CellViewModel] {
+        typealias RelationModel = ObjectView.RelationViewModel
+
+        return model.map { object in
+            let viewModel = RelationModel(
+                id: object.id,
+                title: "test",
+                description: "test"
+            )
+
+            return CellViewModel.relation(viewModel)
+        }
     }
 }

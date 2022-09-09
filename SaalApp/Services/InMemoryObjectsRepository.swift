@@ -5,11 +5,17 @@ final class InMemoryObjectsRepository: ObjectsRepository {
         var objects = [Object]()
 
         for idx in 1...10 {
-            objects.append(
-                Object(
-                    name: "object \(idx)", description: "hello", type: .computer
-                )
+            var object = Object(
+                name: "object \(idx)",
+                description: "hello",
+                type: .computer
             )
+
+            if let prevObject = objects.last {
+                object.relatedObjects = [prevObject.id]
+            }
+
+            objects.append(object)
         }
 
         return objects
