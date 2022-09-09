@@ -1,7 +1,7 @@
 import Foundation
 
-struct Object: Identifiable {
-    enum ObjectType: String, CaseIterable {
+struct Object: Identifiable, Codable {
+    enum ObjectType: String, CaseIterable, Codable {
         case desk, computer, keyboard, server, employee
 
         var displayName: String {
