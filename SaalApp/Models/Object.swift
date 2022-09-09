@@ -15,5 +15,5 @@ struct Object: Identifiable, Codable {
     var description: String
 
     var type: ObjectType
-    var relatedObjects = [Object]()
+    var relatedObjects = [UUID]()
 }
