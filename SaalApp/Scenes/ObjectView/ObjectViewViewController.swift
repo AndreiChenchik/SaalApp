@@ -3,7 +3,7 @@ import UIKit
 protocol ObjectViewBusinessLogic {
       func addLink()
       func displayObject(id: UUID)
-      func deleteRelation(id: UUID)
+      func deleteRelation(objectId: UUID, relationId: UUID)
 }
 
 final class ObjectViewViewController: UIViewController {
@@ -70,13 +70,16 @@ final class ObjectViewViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Section, CellViewModel>
     final class TableDataSource: DataSource {
         private var interactor: Interactor
+        private var objectId: UUID
 
         init(
             tableView: UITableView,
             interactor: Interactor,
+            objectId: UUID,
             cellProvider: @escaping DataSource.CellProvider
         ) {
             self.interactor = interactor
+            self.objectId = objectId
             super.init(tableView: tableView, cellProvider: cellProvider)
         }
 
@@ -107,7 +110,10 @@ final class ObjectViewViewController: UIViewController {
                         var snapshot = self.snapshot()
                         snapshot.deleteItems([item])
                         apply(snapshot)
-                        interactor.deleteRelation(id: relationItem.id)
+                        interactor.deleteRelation(
+                            objectId: objectId,
+                            relationId: relationItem.id
+                        )
                     case .form:
                         break
                     }
@@ -131,7 +137,7 @@ final class ObjectViewViewController: UIViewController {
     }
 
     private lazy var dataSource: TableDataSource = TableDataSource(
-        tableView: tableView, interactor: interactor
+        tableView: tableView, interactor: interactor, objectId: objectId
     ) { tableView, indexPath, viewModel in
         switch viewModel {
         case .relation(let relationViewModel):

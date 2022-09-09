@@ -59,4 +59,18 @@ final class InMemoryObjectsRepository: ObjectsRepository {
             completion(.success(object))
         }
     }
+
+    func updateObject(
+        _ object: Object,
+        completion: @escaping (Result<Object, Error>) -> Void
+    ) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+            let index = self.objects.firstIndex { $0.id == object.id }
+            if let index = index {
+                self.objects[index] = object
+                completion(.success(object))
+            }
+        }
+    }
 }
