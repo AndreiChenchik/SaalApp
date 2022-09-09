@@ -56,10 +56,6 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
         }
     }
 
-    func openObject(id: UUID) {
-        print("selected \(id)")
-    }
-
     func deleteObject(id: UUID) {
         objectsWorker.deleteObject(id: id) { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
