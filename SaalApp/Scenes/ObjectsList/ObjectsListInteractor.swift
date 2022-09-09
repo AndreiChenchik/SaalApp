@@ -38,7 +38,8 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
 
                 let name = object.name.lowercased()
                 let description = object.description.lowercased()
-                let cellTitle = "\(object.type.name): \(name)"
+                let type = object.type.displayName.lowercased()
+                let cellTitle = "\(type): \(name)"
 
                 return (
                     name.contains(prompt)
@@ -53,10 +54,6 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
         objectsWorker.fetchObjects(filter: filter) { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
         }
-    }
-
-    func openObject(id: UUID) {
-        print("selected \(id)")
     }
 
     func deleteObject(id: UUID) {

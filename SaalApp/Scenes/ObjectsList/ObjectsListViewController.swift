@@ -3,17 +3,22 @@ import UIKit
 protocol ObjectsListBusinessLogic {
     func addObject()
     func displayObjects(search: String?)
-    func openObject(id: UUID)
     func deleteObject(id: UUID)
+}
+
+protocol ObjectsListRoutingLogic {
+    func openObject(id: UUID)
 }
 
 final class ObjectsListViewController: UIViewController {
     typealias Interactor = ObjectsListBusinessLogic & UISearchResultsUpdating
 
     private var interactor: Interactor
+    private var router: ObjectsListRoutingLogic
 
-    init(interactor: Interactor) {
+    init(interactor: Interactor, router: ObjectsListRoutingLogic) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -137,7 +142,6 @@ extension ObjectsListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
-        interactor.displayObjects(search: nil)
     }
 
     private func configureViews() {
@@ -173,7 +177,7 @@ extension ObjectsListViewController: UITableViewDelegate {
     ) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let item = dataSource.itemIdentifier(for: indexPath) {
-            interactor.openObject(id: item.id)
+            router.openObject(id: item.id)
         }
     }
 }
