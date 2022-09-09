@@ -60,3 +60,4 @@ The implementation should be done in Swift 5, UIKit framework and Clean Swift ar
     - `ObjectsWorker` created that will act as *Provider* from *Repository* and will be able to implement better error handling logic, retry logic
     - `ObjectsRepository` protocol created to provide option switch from different storage implementation (CoreData, Files, etc) 
     - `FileObjectsRepository` storage implemented to speedup delivery 
+    - `Graph` objects added to Scenes for cleaner instantiation
