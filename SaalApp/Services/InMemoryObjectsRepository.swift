@@ -5,14 +5,21 @@ final class InMemoryObjectsRepository: ObjectsRepository {
         var objects = [Object]()
 
         for idx in 1...10 {
+            let type = Object.ObjectType.allCases.randomElement() ?? .desk
+            let number = Int.random(in: 1...10000)
+            let name = "\(type.displayName.prefix(1))\(number)"
+            let description = "Created on \(Date().dateTimeString)"
+
             var object = Object(
-                name: "object \(idx)",
-                description: "hello",
-                type: .computer
+                name: name,
+                description: description,
+                type: type
             )
 
-            if let prevObject = objects.last {
-                object.relatedObjects = [prevObject.id]
+            for _ in 1...3 {
+                if let otherObject = objects.randomElement() {
+                    object.relatedObjects.append(otherObject.id)
+                }
             }
 
             objects.append(object)

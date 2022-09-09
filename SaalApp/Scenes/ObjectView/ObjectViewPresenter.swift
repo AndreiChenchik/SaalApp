@@ -54,7 +54,7 @@ extension ObjectViewPresenter: ObjectViewPresentationLogic {
                 )
             case .name:
                 fieldModel = FieldModel(
-                    field: field, text: model.description
+                    field: field, text: model.name
                 )
             }
 
@@ -68,10 +68,13 @@ extension ObjectViewPresenter: ObjectViewPresentationLogic {
         typealias RelationModel = ObjectView.RelationViewModel
 
         return model.map { object in
+            let title = "\(object.type.displayName): \(object.name)"
+            let description = "\(object.description)"
+
             let viewModel = RelationModel(
                 id: object.id,
-                title: "test",
-                description: "test"
+                title: title,
+                description: description
             )
 
             return CellViewModel.relation(viewModel)
