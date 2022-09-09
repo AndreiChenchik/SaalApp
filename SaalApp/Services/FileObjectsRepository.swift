@@ -1,33 +1,56 @@
 import Foundation
 
-final class InMemoryObjectsRepository: ObjectsRepository {
-    private var objects: [Object]
+final class FileObjectsRepository: ObjectsRepository {
+    enum Path: String { case main = "objects.json" }
 
-    init() {
-        var objects = [Object]()
+    private var objects: [Object] {
+        didSet { persistObjects(objects) }
+    }
+    private let filesManager: FilesService
 
-        for _ in 1...10 {
-            let type = Object.ObjectType.allCases.randomElement() ?? .desk
-            let number = Int.random(in: 1...10000)
-            let name = "\(type.displayName.prefix(1))\(number)"
-            let description = "Created on \(Date().dateTimeString)"
+    init(filesManager: FilesService) {
+        self.filesManager = filesManager
 
-            var object = Object(
-                name: name,
-                description: description,
-                type: type
-            )
+        if
+            let data = try? filesManager.read(fileNamed: Path.main.rawValue),
+            let objects = try? JSONDecoder().decode([Object].self, from: data)
+        {
+            self.objects = objects
+        } else {
+            var objects = [Object]()
 
-            for _ in 1...3 {
-                if let otherObject = objects.randomElement() {
-                    object.relatedObjects.append(otherObject.id)
+            for _ in 1...10 {
+                let type = Object.ObjectType.allCases.randomElement() ?? .desk
+                let number = Int.random(in: 1...10000)
+                let name = "\(type.displayName.prefix(1))\(number)"
+                let description = "Created on \(Date().dateTimeString)"
+
+                var object = Object(
+                    name: name,
+                    description: description,
+                    type: type
+                )
+
+                for _ in 1...3 {
+                    if let otherObject = objects.randomElement() {
+                        object.relatedObjects.append(otherObject.id)
+                    }
                 }
+
+                objects.append(object)
             }
 
-            objects.append(object)
+            self.objects = objects
+            persistObjects(objects)
         }
+    }
 
-        self.objects = objects
+    private func persistObjects(_ objects: [Object]) {
+        if let data = try? JSONEncoder().encode(objects) {
+            try? filesManager.save(
+                fileNamed: Path.main.rawValue, data: data
+            )
+        }
     }
 
     func fetchObjects(
