@@ -13,7 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: scene)
 
-        let objectsRepository = InMemoryObjectsRepository()
+        let filesManager = FilesService()
+        let objectsRepository = FileObjectsRepository(filesManager: filesManager)
         let rootViewController = ObjectsListGraph.getVC(
             objectsRepository: objectsRepository
         )
