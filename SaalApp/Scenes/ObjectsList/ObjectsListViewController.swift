@@ -137,7 +137,6 @@ extension ObjectsListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
-        interactor.displayObjects(search: nil)
     }
 
     private func configureViews() {
