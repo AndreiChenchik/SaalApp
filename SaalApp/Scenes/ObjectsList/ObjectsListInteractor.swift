@@ -38,7 +38,8 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
 
                 let name = object.name.lowercased()
                 let description = object.description.lowercased()
-                let cellTitle = "\(object.type.name): \(name)"
+                let type = object.type.displayName.lowercased()
+                let cellTitle = "\(type): \(name)"
 
                 return (
                     name.contains(prompt)

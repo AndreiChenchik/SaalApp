@@ -3,12 +3,11 @@ import Foundation
 final class InMemoryObjectsRepository: ObjectsRepository {
     private var objects: [Object] = {
         var objects = [Object]()
-        var type = ObjectType(name: "test")
 
         for idx in 1...10 {
             objects.append(
                 Object(
-                    name: "object \(idx)", description: "hello", type: type
+                    name: "object \(idx)", description: "hello", type: .computer
                 )
             )
         }

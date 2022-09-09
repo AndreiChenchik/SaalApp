@@ -55,7 +55,7 @@ struct ObjectsWorker {
         let object = Object(
             name: "hello",
             description: "hello",
-            type: ObjectType(name: "test")
+            type: .computer
         )
 
         objectsRepository.addObject(object) { result in
