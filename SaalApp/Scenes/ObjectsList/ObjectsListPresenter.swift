@@ -25,7 +25,10 @@ extension ObjectsListPresenter: ObjectsListPresentationLogic {
         snapshot.appendItems(cellsData)
 
         let viewModel = ViewModel(snapshot: snapshot)
-        viewController?.displayObjects(viewModel: viewModel)
+
+        DispatchQueue.main.async { [weak viewController] in
+            viewController?.displayObjects(viewModel: viewModel)
+        }
     }
 
     private func convert(model: Object) -> CellViewModel {
