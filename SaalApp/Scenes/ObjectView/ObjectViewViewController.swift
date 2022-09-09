@@ -178,6 +178,14 @@ extension ObjectViewViewController {
         view.addSubview(tableView)
         tableView.frame = view.bounds
         navigationItem.rightBarButtonItem = rightBarButton
+
+        // swiftlint:disable:next unavailable_condition
+        if #available(iOS 15, *) {} else {
+            dataSource.apply(
+                NSDiffableDataSourceSnapshot<Section, CellViewModel>(),
+                animatingDifferences: true, completion: nil
+            )
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

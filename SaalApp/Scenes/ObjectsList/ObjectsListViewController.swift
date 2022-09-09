@@ -153,6 +153,14 @@ extension ObjectsListViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         navigationItem.leftBarButtonItem = leftBarButton
         navigationItem.searchController = searchController
+
+        // swiftlint:disable:next unavailable_condition
+        if #available(iOS 15, *) {} else {
+            dataSource.apply(
+                NSDiffableDataSourceSnapshot<Section, CellViewModel>(),
+                animatingDifferences: true, completion: nil
+            )
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
