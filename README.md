@@ -48,6 +48,14 @@ The implementation should be done in Swift 5, UIKit framework and Clean Swift ar
 
 ## Decisions and limitations
 
-- Supported Xcode version is limited to 13+ because it's the latest stable version.
-- Supported iOS limited to 13+ since it's have all necessary SDK changes for collection-like views (e.g. diffable data source) and [widely adopted by ~97% of market](https://mixpanel.com/trends/#report/ios_13/from_date:-3,report_unit:hour,to_date:0). 
-- Form factor support limited to portrait iPhone because it would be better to create a different UI approach for wide screens like iPad or landscape iPhone orientation.
+- Requirements
+    - Supported Xcode version is limited to 13+ because it's the latest stable version.
+    - Supported iOS limited to 13+ since it's have all necessary SDK changes for collection-like views (e.g. diffable data source) and [widely adopted by ~97% of market](https://mixpanel.com/trends/#report/ios_13/from_date:-3,report_unit:hour,to_date:0). 
+    - Form factor support limited to portrait iPhone because it would be better to create a different UI approach for wide screens like iPad or landscape iPhone orientation.
+- Code Structure
+    - Code is using CleanSwift for Unidirectional data decoupling
+    - `UITableView` is used for simplicity, if there will be a new design - it can be easily migrated to UICollectionView with almost the same `DiffableDataSource`
+    - `DiffableDataSource` belongs to Display(View) layer due to the fact that we're just passing data to it and from perspective of our code it still remains "Passive"
+    - `ObjectsWorker` created that will act as *Provider* from *Repository* and will be able to implement better error handling logic, retry logic
+    - `ObjectsRepository` protocol created to provide option switch from different storage implementation (CoreData, Files, etc) 
+    - `FileObjectsRepository` storage implemented to speedup delivery 
