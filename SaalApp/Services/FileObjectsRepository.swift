@@ -3,10 +3,11 @@ import Foundation
 final class FileObjectsRepository: ObjectsRepository {
     enum Path: String { case main = "objects.json" }
 
+    private let filesManager: FilesService
+
     private var objects: [Object] {
         didSet { persistObjects(objects) }
     }
-    private let filesManager: FilesService
 
     init(filesManager: FilesService) {
         self.filesManager = filesManager
@@ -17,30 +18,7 @@ final class FileObjectsRepository: ObjectsRepository {
         {
             self.objects = objects
         } else {
-            var objects = [Object]()
-
-            for _ in 1...10 {
-                let type = Object.ObjectType.allCases.randomElement() ?? .desk
-                let number = Int.random(in: 1...10000)
-                let name = "\(type.displayName.prefix(1))\(number)"
-                let description = "Created on \(Date().dateTimeString)"
-
-                var object = Object(
-                    name: name,
-                    description: description,
-                    type: type
-                )
-
-                for _ in 1...3 {
-                    if let otherObject = objects.randomElement() {
-                        object.relatedObjects.append(otherObject.id)
-                    }
-                }
-
-                objects.append(object)
-            }
-
-            self.objects = objects
+            self.objects = Object.sampleObjects
             persistObjects(objects)
         }
     }
