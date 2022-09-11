@@ -2,6 +2,7 @@ import UIKit
 
 protocol ObjectsListPresentationLogic {
     func present(response: ObjectsList.Response)
+    func displayObject(response: ObjectsList.AddObject.Response)
 }
 
 final class ObjectsListInteractor: NSObject {
@@ -20,11 +21,23 @@ final class ObjectsListInteractor: NSObject {
 // MARK: - ObjectsListBusinessLogic
 
 extension ObjectsListInteractor: ObjectsListBusinessLogic {
-    typealias Response = ObjectsList.Response
+    func addMock(request: ObjectsList.MockObjects.Request) {
+        objectsWorker.addObjects(
+            objects: Object.sampleObjects
+        ) { [weak self] objects in
+            self?.presenter.present(response: .init(objects: objects))
+        }
+    }
 
     func addObject(request: ObjectsList.AddObject.Request) {
-        objectsWorker.addObject { [weak self] objects in
-            self?.presenter.present(response: Response(objects: objects))
+        let object = Object(
+            name: "",
+            description: "Created at \(Date().dateTimeString)",
+            type: request.type
+        )
+
+        objectsWorker.addObject(object: object) { [weak self] object in
+            self?.presenter.displayObject(response: .init(objectId: object.id))
         }
     }
 
@@ -54,14 +67,14 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
         }
 
         objectsWorker.fetchObjects(filter: filter) { [weak self] objects in
-            self?.presenter.present(response: Response(objects: objects))
+            self?.presenter.present(response: .init(objects: objects))
         }
     }
 
     func deleteObject(request: ObjectsList.DeleteObject.Request) {
         let id = request.objectId
         objectsWorker.deleteObject(id: id) { [weak self] objects in
-            self?.presenter.present(response: Response(objects: objects))
+            self?.presenter.present(response: .init(objects: objects))
         }
     }
 }

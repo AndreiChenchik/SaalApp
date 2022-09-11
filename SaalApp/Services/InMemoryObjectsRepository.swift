@@ -1,11 +1,7 @@
 import Foundation
 
 final class InMemoryObjectsRepository: ObjectsRepository {
-    private var objects: [Object]
-
-    init() {
-        self.objects = Object.sampleObjects
-    }
+    private var objects: [Object] = []
 
     func fetchObjects(
         filter: @escaping (Object) -> Bool,
@@ -43,6 +39,17 @@ final class InMemoryObjectsRepository: ObjectsRepository {
             guard let self = self else { return }
             self.objects.append(object)
             completion(.success(object))
+        }
+    }
+
+    func addObjects(
+        _ objects: [Object],
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else { return }
+            self.objects.append(contentsOf: objects)
+            completion(.success(true))
         }
     }
 
