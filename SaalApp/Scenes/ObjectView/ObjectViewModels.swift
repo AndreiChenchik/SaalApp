@@ -1,41 +1,78 @@
 import UIKit
 
+// swiftlint:disable nesting
 enum ObjectView {
-    struct GetRequest {
-        let objectId: UUID
+
+    // MARK: Use Cases
+
+    enum LoadObject {
+        struct Request {}
     }
 
-    struct GetResponse {
-        let object: Object
-        var relatedObjects = [Object]()
-    }
-
-    struct RelationViewModel: Hashable, Identifiable {
-        let id: UUID
-        let title: String
-        let description: String
-    }
-
-    enum FormField: String, Hashable, CaseIterable {
-        case type, name, description
-
-        var displayName: String {
-           return rawValue.capitalized
+    enum UpdateField {
+        struct Request {
+            let category: ViewModel.Cell.Field.Category
+            let value: String
         }
     }
 
-    struct FieldViewModel: Hashable {
-        let field: FormField
-        let text: String
+    enum StartAddRelation {
+        struct Request {}
+
+        struct Response {
+            let allObjects: [Object]
+        }
+
+        struct ViewModel {
+            let relations: [ObjectView.ViewModel.Cell.Relation]
+        }
     }
 
-    enum CellViewModel: Hashable {
-        case form(FieldViewModel)
-        case relation(RelationViewModel)
+    enum AddRelation {
+        struct Request {
+            let relationId: UUID
+        }
     }
 
-    enum ListSection: CaseIterable { case form, relation }
-    struct TableViewModel {
-        let snapshot: NSDiffableDataSourceSnapshot<ListSection, CellViewModel>
+    enum RemoveRelation {
+        struct Request {
+            let relationId: UUID
+        }
+    }
+
+    struct Response {
+        let object: Object
+        let relatedObjects: [Object]
+    }
+
+    struct ViewModel {
+        enum Section: String, CaseIterable { case form, relation }
+
+        enum Cell: Hashable {
+            struct Relation: Hashable, Identifiable {
+                let id: UUID
+                let title: String
+                let description: String
+            }
+
+            struct Field: Hashable {
+                enum Category: String, Hashable, CaseIterable {
+                    case type, name, description
+
+                    var displayName: String {
+                       return rawValue.capitalized
+                    }
+                }
+
+                let category: Category
+                let value: String
+            }
+
+            case form(Field)
+            case relation(Relation)
+        }
+
+        let snapshot: NSDiffableDataSourceSnapshot<Section, Cell>
+        let type: String
     }
 }

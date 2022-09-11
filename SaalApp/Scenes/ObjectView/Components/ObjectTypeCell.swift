@@ -1,12 +1,12 @@
 import UIKit
 
-final class ObjectFieldCell: UITableViewCell {
-    static let identifier = "fieldCell"
+final class ObjectTypeFieldCell: UITableViewCell {
+    static let identifier = "typeCell"
 
     override init(
         style: UITableViewCell.CellStyle, reuseIdentifier: String?
     ) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value1, reuseIdentifier: reuseIdentifier)
     }
 
     required init?(coder: NSCoder) {

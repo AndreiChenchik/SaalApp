@@ -3,9 +3,11 @@ import UIKit
 // MARK: Protocols
 
 protocol ObjectViewBusinessLogic {
-    func addLink()
-    func displayObject(id: UUID)
-    func deleteRelation(objectId: UUID, relationId: UUID)
+    func loadObject(request: ObjectView.LoadObject.Request)
+    func updateField(request: ObjectView.UpdateField.Request)
+    func startAddRelation(request: ObjectView.StartAddRelation.Request)
+    func addRelation(request: ObjectView.AddRelation.Request)
+    func removeRelation(request: ObjectView.RemoveRelation.Request)
 }
 
 // MARK: - ViewController
@@ -14,18 +16,16 @@ final class ObjectViewViewController: UIViewController {
     typealias Interactor = ObjectViewBusinessLogic
 
     private var interactor: Interactor
-    private var objectId: UUID
 
-    init(objectId: UUID, interactor: Interactor) {
+    init(interactor: Interactor) {
         self.interactor = interactor
-        self.objectId = objectId
 
         self.tableView = Self.configureTableView()
         self.dataSource = .init(
             tableView: tableView,
             cellProvider: cellProvider,
             onRelationDelete: Self.getRelationDeleteAction(
-                interactor: interactor, objectId: objectId
+                interactor: interactor
             )
         )
 
@@ -58,13 +58,18 @@ final class ObjectViewViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
 
         tableView.register(
-            ObjectFieldCell.self,
-            forCellReuseIdentifier: ObjectFieldCell.identifier
+            ObjectTextFieldCell.self,
+            forCellReuseIdentifier: ObjectTextFieldCell.identifier
         )
 
         tableView.register(
             ObjectRelationCell.self,
             forCellReuseIdentifier: ObjectRelationCell.identifier
+        )
+
+        tableView.register(
+            ObjectTypeFieldCell.self,
+            forCellReuseIdentifier: ObjectTypeFieldCell.identifier
         )
 
         return tableView
@@ -89,18 +94,43 @@ final class ObjectViewViewController: UIViewController {
 
             cell.textLabel?.text = relationViewModel.title
             cell.detailTextLabel?.text = relationViewModel.description
+            cell.selectionStyle = .none
 
             return cell
         case .form(let formViewModel):
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: ObjectFieldCell.identifier,
-                for: indexPath
-            )
 
-            cell.textLabel?.text = formViewModel.field.displayName
-            cell.detailTextLabel?.text = formViewModel.text
+            switch formViewModel.category {
+            case .type:
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: ObjectTypeFieldCell.identifier,
+                    for: indexPath
+                )
 
-            return cell
+                cell.textLabel?.text = formViewModel.category.displayName
+                cell.detailTextLabel?.text = formViewModel.value
+                cell.selectionStyle = .none
+
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: ObjectTextFieldCell.identifier,
+                    for: indexPath
+                )
+
+                if let cell = cell as? ObjectTextFieldCell {
+                    cell.textLabel?.text = formViewModel.category.displayName
+                    cell.textField.category = formViewModel.category
+                    cell.textField.text = formViewModel.value
+
+                    if
+                        let viewController = tableView.findViewController(),
+                        let delegate = viewController as? ObjectViewViewController {
+                        cell.textField.delegate = delegate
+                    }
+                }
+
+                return cell
+            }
         }
     }
 }
@@ -116,41 +146,81 @@ extension ObjectViewViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        interactor.displayObject(id: objectId)
+        let request = ObjectView.LoadObject.Request()
+        interactor.loadObject(request: request)
     }
 }
 
 // MARK: - UI Events
 
-extension ObjectViewViewController: UITableViewDelegate {
+extension ObjectViewViewController: UITableViewDelegate, UITextFieldDelegate {
     @objc func didTapLinkObject() {
-        interactor.addLink()
+        interactor.startAddRelation(request: .init())
     }
 
-    typealias RelationDeleteAction = (ObjectView.RelationViewModel) -> Void
+    typealias RelationCellModel = ObjectView.ViewModel.Cell.Relation
+    typealias RelationDeleteAction = (RelationCellModel) -> Void
     private static func getRelationDeleteAction(
-        interactor: Interactor,
-        objectId: UUID
+        interactor: Interactor
     ) -> RelationDeleteAction {
         return { viewModel in
-            interactor.deleteRelation(
-                objectId: objectId,
-                relationId: viewModel.id
-            )
+            let id = viewModel.id
+            let request = ObjectView.RemoveRelation.Request(relationId: id)
+            interactor.removeRelation(request: request)
         }
     }
 
     func tableView(
         _ tableView: UITableView, didSelectRowAt indexPath: IndexPath
     ) {
+        let cell = tableView.cellForRow(at: indexPath)
+
+        if let cell = cell as? ObjectTextFieldCell {
+            cell.textField.becomeFirstResponder()
+            cell.textField.selectAll(nil)
+        }
+
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        guard
+            let textField = textField as? ObjectTextFieldCell.TextField,
+            let category = textField.category,
+            let value = textField.text
+        else {
+            return false
+        }
+
+        let request = ObjectView.UpdateField.Request(
+            category: category, value: value
+        )
+
+        interactor.updateField(request: request)
+
+        return true
     }
 }
 
 // MARK: - ObjectViewDisplayLogic
 
 extension ObjectViewViewController: ObjectViewDisplayLogic {
-    func displayObject(viewModel: ObjectView.TableViewModel) {
+    func displayObject(viewModel: ObjectView.ViewModel) {
         dataSource.apply(viewModel.snapshot, animatingDifferences: false)
+    }
+
+    func selectRelation(viewModel: ObjectView.StartAddRelation.ViewModel) {
+        let relationController = RelationTableViewController(
+            relations: viewModel.relations
+        ) { [weak self] id in
+            let request = ObjectView.AddRelation.Request(relationId: id)
+            self?.interactor.addRelation(request: request)
+        }
+
+        present(relationController, animated: true)
     }
 }

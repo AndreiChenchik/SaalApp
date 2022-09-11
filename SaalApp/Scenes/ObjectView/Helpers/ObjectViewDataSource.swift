@@ -1,16 +1,18 @@
 import UIKit
 
-typealias OVSection = ObjectView.ListSection
-typealias OVViewModel = ObjectView.CellViewModel
-typealias OVDataSource = UITableViewDiffableDataSource<OVSection, OVViewModel>
+typealias OVDataSource = UITableViewDiffableDataSource<
+    ObjectView.ViewModel.Section,
+    ObjectView.ViewModel.Cell
+>
 
 final class ObjectViewDataSource: OVDataSource {
-    private var onRelationDelete: (ObjectView.RelationViewModel) -> Void
+    typealias RelationCellModel = ObjectView.ViewModel.Cell.Relation
+    private var onRelationDelete: (RelationCellModel) -> Void
 
     init(
         tableView: UITableView,
-        cellProvider: @escaping OVDataSource.CellProvider,
-        onRelationDelete: @escaping (ObjectView.RelationViewModel) -> Void
+        cellProvider: @escaping ObjectViewDataSource.CellProvider,
+        onRelationDelete: @escaping (RelationCellModel) -> Void
     ) {
         self.onRelationDelete = onRelationDelete
         super.init(tableView: tableView, cellProvider: cellProvider)
@@ -22,11 +24,11 @@ final class ObjectViewDataSource: OVDataSource {
         _ tableView: UITableView,
         titleForHeaderInSection section: Int
     ) -> String? {
-        let tableSection = OVSection.allCases[section]
+        let tableSection = ObjectView.ViewModel.Section.allCases[section]
 
         switch tableSection {
         case .form:
-            return nil
+            return "Details"
         case .relation:
             return "Relations"
         }
