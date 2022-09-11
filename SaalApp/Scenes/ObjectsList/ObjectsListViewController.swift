@@ -4,6 +4,7 @@ import UIKit
 
 protocol ObjectsListBusinessLogic {
     func addObject(request: ObjectsList.AddObject.Request)
+    func addMock(request: ObjectsList.MockObjects.Request)
     func loadObjects(request: ObjectsList.LoadObjects.Request)
     func deleteObject(request: ObjectsList.DeleteObject.Request)
 }
@@ -18,7 +19,7 @@ final class ObjectsListViewController: UIViewController {
     typealias Interactor = ObjectsListBusinessLogic
 
     private var interactor: Interactor
-    private var router: ObjectsListRoutingLogic
+    var router: ObjectsListRoutingLogic
 
     init(interactor: Interactor, router: ObjectsListRoutingLogic) {
         self.interactor = interactor
@@ -61,7 +62,7 @@ final class ObjectsListViewController: UIViewController {
             image: UIImage(systemName: "rectangle.stack.fill.badge.plus"),
             style: .plain,
             target: self,
-            action: #selector(didTapAddObject)
+            action: #selector(didTapMockObject)
         )
 
         navigationItem.setLeftBarButtonItems(
@@ -136,8 +137,28 @@ extension ObjectsListViewController: UITableViewDelegate, UISearchResultsUpdatin
         }
     }
 
+    @objc func didTapMockObject() {
+        interactor.addMock(request: .init())
+    }
+
     @objc func didTapAddObject() {
-        interactor.addObject(request: .init())
+        let alert = UIAlertController(
+            title: "Add object",
+            message: "Select object type",
+            preferredStyle: .actionSheet
+        )
+
+        Object.ObjectType.allCases.forEach { type in
+            alert.addAction(
+                UIAlertAction(
+                    title: type.displayName, style: .default
+                ) { [weak self] _ in
+                    self?.interactor.addObject(request: .init(type: type))
+                }
+            )
+        }
+
+        present(alert, animated: true)
     }
 
     @objc func didTapEditObjects() {

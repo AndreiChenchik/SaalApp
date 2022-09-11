@@ -6,11 +6,17 @@ enum ObjectsList {
     // MARK: Use Cases
 
     enum AddObject {
-        struct Request {}
+        struct Request {
+            let type: Object.ObjectType
+        }
 
         struct Response {
             let objectId: UUID
         }
+    }
+
+    enum MockObjects {
+        struct Request {}
     }
 
     enum LoadObjects {

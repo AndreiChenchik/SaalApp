@@ -1,6 +1,8 @@
 import UIKit
 
 protocol ObjectsListDisplayLogic: AnyObject {
+    var router: ObjectsListRoutingLogic { get }
+
     func displayObjects(
         viewModel: ObjectsList.ViewModel
     )
@@ -28,6 +30,12 @@ extension ObjectsListPresenter: ObjectsListPresentationLogic {
 
         DispatchQueue.main.async { [weak viewController] in
             viewController?.displayObjects(viewModel: viewModel)
+        }
+    }
+
+    func displayObject(response: ObjectsList.AddObject.Response) {
+        DispatchQueue.main.async { [weak viewController] in
+            viewController?.router.openObject(id: response.objectId)
         }
     }
 

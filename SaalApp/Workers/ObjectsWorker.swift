@@ -16,6 +16,11 @@ protocol ObjectsRepository {
         completion: @escaping (Result<Object, Error>) -> Void
     )
 
+    func addObjects(
+        _ objects: [Object],
+        completion: @escaping (Result<Bool, Error>) -> Void
+    )
+
     func updateObject(
         _ object: Object,
         completion: @escaping (Result<Object, Error>) -> Void
@@ -56,14 +61,21 @@ struct ObjectsWorker {
         }
     }
 
-    func addObject(completion: @escaping ([Object]) -> Void) {
-        let object = Object(
-            name: "hello",
-            description: "hello",
-            type: .computer
-        )
-
+    func addObject(object: Object, completion: @escaping (Object) -> Void) {
         objectsRepository.addObject(object) { result in
+            switch result {
+            case .success:
+                completion(object)
+            case .failure:
+                break
+            }
+        }
+    }
+
+    func addObjects(
+        objects: [Object], completion: @escaping ([Object]) -> Void
+    ) {
+        objectsRepository.addObjects(objects) { result in
             switch result {
             case .success:
                 fetchObjects(completion: completion)
