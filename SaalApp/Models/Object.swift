@@ -26,7 +26,10 @@ extension Object {
             let type = Object.ObjectType.allCases.randomElement() ?? .desk
             let number = Int.random(in: 1...10000)
             let name = "\(type.displayName.prefix(1))\(number)"
-            let description = "Created on \(Date().dateTimeString)"
+            let date = Date(
+                timeIntervalSinceNow: Double.random(in: -60*60*24*30...0)
+            )
+            let description = "Created on \(date.dateTimeString)"
 
             let object = Object(
                 name: name,

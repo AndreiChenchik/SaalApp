@@ -181,22 +181,16 @@ extension ObjectViewViewController: UITableViewDelegate, UITextFieldDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    func textField(
-        _ textField: UITextField,
-        shouldChangeCharactersIn range: NSRange,
-        replacementString string: String
-    ) -> Bool {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         guard
             let textField = textField as? ObjectTextFieldCell.TextField,
             let category = textField.category,
             let value = textField.text
         else {
-            return false
+            return
         }
 
         interactor.updateField(request: .init(category: category, value: value))
-
-        return true
     }
 }
 

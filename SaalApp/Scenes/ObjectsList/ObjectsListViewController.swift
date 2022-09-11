@@ -198,9 +198,11 @@ extension ObjectsListViewController {
         activateTableView()
         setupNavigation()
         setupSearch()
+
+        interactor.loadObjects(request: .init(filter: nil))
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         interactor.loadObjects(request: .init(filter: nil))
     }
 }
