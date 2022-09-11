@@ -6,8 +6,8 @@ protocol ObjectsListPresentationLogic {
 }
 
 final class ObjectsListInteractor: NSObject {
-    let presenter: ObjectsListPresentationLogic
-    let objectsWorker: ObjectsWorker
+    private let presenter: ObjectsListPresentationLogic
+    private let objectsWorker: ObjectsWorker
 
     init(
         presenter: ObjectsListPresentationLogic,
