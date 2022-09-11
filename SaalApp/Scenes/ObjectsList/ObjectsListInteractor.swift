@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ObjectsListPresentationLogic {
-    func present(response: ObjectsList.GetResponse)
+    func present(response: ObjectsList.Response)
 }
 
 final class ObjectsListInteractor: NSObject {
@@ -20,17 +20,19 @@ final class ObjectsListInteractor: NSObject {
 // MARK: - ObjectsListBusinessLogic
 
 extension ObjectsListInteractor: ObjectsListBusinessLogic {
-    typealias Response = ObjectsList.GetResponse
+    typealias Response = ObjectsList.Response
 
-    func addObject() {
+    func addObject(request: ObjectsList.AddObject.Request) {
         objectsWorker.addObject { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
         }
     }
 
-    func displayObjects(search: String?) {
+    func loadObjects(request: ObjectsList.LoadObjects.Request) {
+        let filterText = request.filter
+
         let filter: (Object) -> Bool
-        if let search = search?.trimmingCharacters(in: .whitespacesAndNewlines),
+        if let search = filterText?.trimmingCharacters(in: .whitespacesAndNewlines),
            !search.isEmpty {
             filter = { object in
                 let prompt = search
@@ -56,24 +58,10 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
         }
     }
 
-    func deleteObject(id: UUID) {
+    func deleteObject(request: ObjectsList.DeleteObject.Request) {
+        let id = request.objectId
         objectsWorker.deleteObject(id: id) { [weak self] objects in
             self?.presenter.present(response: Response(objects: objects))
-        }
-    }
-}
-
-// MARK: - UISearchResultsUpdating
-
-extension ObjectsListInteractor: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        if
-            let prompt = searchController.searchBar.text,
-            !prompt.isEmpty
-        {
-            displayObjects(search: prompt)
-        } else {
-            displayObjects(search: nil)
         }
     }
 }

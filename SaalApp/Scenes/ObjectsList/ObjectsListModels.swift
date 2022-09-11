@@ -1,11 +1,31 @@
 import UIKit
 
+// swiftlint:disable nesting
 enum ObjectsList {
-    struct GetRequest {
-        let search: String?
+
+    // MARK: Use Cases
+
+    enum AddObject {
+        struct Request {}
+
+        struct Response {
+            let objectId: UUID
+        }
     }
 
-    struct GetResponse {
+    enum LoadObjects {
+        struct Request {
+            let filter: String?
+        }
+    }
+
+    enum DeleteObject {
+        struct Request {
+            let objectId: UUID
+        }
+    }
+
+    struct Response {
         let objects: [Object]
     }
 

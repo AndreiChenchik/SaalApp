@@ -3,9 +3,9 @@ import UIKit
 // MARK: Protocols
 
 protocol ObjectsListBusinessLogic {
-    func addObject()
-    func displayObjects(search: String?)
-    func deleteObject(id: UUID)
+    func addObject(request: ObjectsList.AddObject.Request)
+    func loadObjects(request: ObjectsList.LoadObjects.Request)
+    func deleteObject(request: ObjectsList.DeleteObject.Request)
 }
 
 protocol ObjectsListRoutingLogic {
@@ -15,7 +15,7 @@ protocol ObjectsListRoutingLogic {
 // MARK: - ViewController
 
 final class ObjectsListViewController: UIViewController {
-    typealias Interactor = ObjectsListBusinessLogic & UISearchResultsUpdating
+    typealias Interactor = ObjectsListBusinessLogic
 
     private var interactor: Interactor
     private var router: ObjectsListRoutingLogic
@@ -43,18 +43,32 @@ final class ObjectsListViewController: UIViewController {
     private func setupNavigation() {
         title = "Objects"
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
+        let editButton = UIBarButtonItem(
             title: "Edit",
             style: .plain,
             target: self,
             action: #selector(didTapEditObjects)
         )
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        let addButton = UIBarButtonItem(
             image: .add,
             style: .plain,
             target: self,
             action: #selector(didTapAddObject)
+        )
+
+        let mockButton = UIBarButtonItem(
+            image: UIImage(systemName: "rectangle.stack.fill.badge.plus"),
+            style: .plain,
+            target: self,
+            action: #selector(didTapAddObject)
+        )
+
+        navigationItem.setLeftBarButtonItems(
+            [editButton], animated: true
+        )
+        navigationItem.setRightBarButtonItems(
+            [addButton, mockButton], animated: true
         )
     }
 
@@ -68,7 +82,7 @@ final class ObjectsListViewController: UIViewController {
         controller.searchBar.sizeToFit()
         controller.searchBar.searchBarStyle = .prominent
 
-        controller.searchResultsUpdater = interactor
+        controller.searchResultsUpdater = self
 
         navigationItem.searchController = controller
     }
@@ -112,25 +126,36 @@ final class ObjectsListViewController: UIViewController {
 
 // MARK: - UI Events
 
-extension ObjectsListViewController: UITableViewDelegate {
+extension ObjectsListViewController: UITableViewDelegate, UISearchResultsUpdating {
     typealias ObjectDeleteAction = (ObjectsList.CellViewModel) -> Void
     private static func getObjectDeleteAction(
         interactor: Interactor
     ) -> ObjectDeleteAction {
         return { viewModel in
-            interactor.deleteObject(id: viewModel.id)
+            interactor.deleteObject(request: .init(objectId: viewModel.id))
         }
     }
 
     @objc func didTapAddObject() {
-        interactor.addObject()
+        interactor.addObject(request: .init())
     }
 
     @objc func didTapEditObjects() {
         tableView.setEditing(!tableView.isEditing, animated: true)
 
-        let leftButton = navigationController?.navigationItem.leftBarButtonItem
+        let leftButton = navigationItem.leftBarButtonItem
         leftButton?.title = tableView.isEditing ? "Done" : "Edit"
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        if
+            let prompt = searchController.searchBar.text,
+            !prompt.isEmpty
+        {
+            interactor.loadObjects(request: .init(filter: prompt))
+        } else {
+            interactor.loadObjects(request: .init(filter: nil))
+        }
     }
 
     func tableView(
@@ -155,7 +180,7 @@ extension ObjectsListViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        interactor.displayObjects(search: nil)
+        interactor.loadObjects(request: .init(filter: nil))
     }
 }
 

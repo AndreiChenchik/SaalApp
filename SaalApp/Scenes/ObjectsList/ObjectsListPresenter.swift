@@ -17,7 +17,7 @@ extension ObjectsListPresenter: ObjectsListPresentationLogic {
     typealias CellViewModel = ObjectsList.CellViewModel
     typealias Section = ObjectsList.ListSection
 
-    func present(response: ObjectsList.GetResponse) {
+    func present(response: ObjectsList.Response) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellViewModel>()
         snapshot.appendSections([.main])
 
