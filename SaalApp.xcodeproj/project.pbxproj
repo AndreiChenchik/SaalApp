@@ -17,6 +17,10 @@
 		3886858E28CDE32E00BE14DE /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886858D28CDE32E00BE14DE /* UIView+Extensions.swift */; };
 		3886859028CE230200BE14DE /* ObjectTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886858F28CE230200BE14DE /* ObjectTypeCell.swift */; };
 		3886859228CE286D00BE14DE /* RelationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886859128CE286D00BE14DE /* RelationTableViewController.swift */; };
+		3886859A28CE5E0800BE14DE /* ObjectsListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886859928CE5E0800BE14DE /* ObjectsListInteractorTests.swift */; };
+		388685A128CE5ED700BE14DE /* ObjectsListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388685A028CE5ED700BE14DE /* ObjectsListPresenterTests.swift */; };
+		388685A328CE5EF400BE14DE /* ObjectViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388685A228CE5EF400BE14DE /* ObjectViewPresenterTests.swift */; };
+		388685A528CE5F7A00BE14DE /* ObjectViewInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388685A428CE5F7A00BE14DE /* ObjectViewInteractorTests.swift */; };
 		38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */; };
 		38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */; };
 		38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24128CA39040095715E /* ObjectsListModels.swift */; };
@@ -38,6 +42,16 @@
 		38A4F26A28CB8BEC0095715E /* ObjectsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F26928CB8BEC0095715E /* ObjectsListCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3886859B28CE5E0800BE14DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 384BD3FC28C9E4FF009C4922 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 384BD40328C9E4FF009C4922;
+			remoteInfo = SaalApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		384BD40428C9E4FF009C4922 /* SaalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		384BD40728C9E4FF009C4922 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +67,11 @@
 		3886858D28CDE32E00BE14DE /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		3886858F28CE230200BE14DE /* ObjectTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTypeCell.swift; sourceTree = "<group>"; };
 		3886859128CE286D00BE14DE /* RelationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationTableViewController.swift; sourceTree = "<group>"; };
+		3886859728CE5E0800BE14DE /* SaalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3886859928CE5E0800BE14DE /* ObjectsListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractorTests.swift; sourceTree = "<group>"; };
+		388685A028CE5ED700BE14DE /* ObjectsListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListPresenterTests.swift; sourceTree = "<group>"; };
+		388685A228CE5EF400BE14DE /* ObjectViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewPresenterTests.swift; sourceTree = "<group>"; };
+		388685A428CE5F7A00BE14DE /* ObjectViewInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewInteractorTests.swift; sourceTree = "<group>"; };
 		38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractor.swift; sourceTree = "<group>"; };
 		38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListGraph.swift; sourceTree = "<group>"; };
 		38A4F24128CA39040095715E /* ObjectsListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListModels.swift; sourceTree = "<group>"; };
@@ -82,6 +101,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3886859428CE5E0800BE14DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +117,7 @@
 				384BD41D28C9F7A8009C4922 /* .gitignore */,
 				384BD41B28C9EDCF009C4922 /* README.md */,
 				384BD40628C9E4FF009C4922 /* SaalApp */,
+				3886859828CE5E0800BE14DE /* SaalAppTests */,
 				384BD40528C9E4FF009C4922 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				384BD40428C9E4FF009C4922 /* SaalApp.app */,
+				3886859728CE5E0800BE14DE /* SaalAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,6 +146,17 @@
 				384BD41528C9E501009C4922 /* Info.plist */,
 			);
 			path = SaalApp;
+			sourceTree = "<group>";
+		};
+		3886859828CE5E0800BE14DE /* SaalAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3886859928CE5E0800BE14DE /* ObjectsListInteractorTests.swift */,
+				388685A028CE5ED700BE14DE /* ObjectsListPresenterTests.swift */,
+				388685A228CE5EF400BE14DE /* ObjectViewPresenterTests.swift */,
+				388685A428CE5F7A00BE14DE /* ObjectViewInteractorTests.swift */,
+			);
+			path = SaalAppTests;
 			sourceTree = "<group>";
 		};
 		38A4F23928CA351B0095715E /* Scenes */ = {
@@ -249,6 +288,24 @@
 			productReference = 384BD40428C9E4FF009C4922 /* SaalApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3886859628CE5E0800BE14DE /* SaalAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3886859F28CE5E0800BE14DE /* Build configuration list for PBXNativeTarget "SaalAppTests" */;
+			buildPhases = (
+				3886859328CE5E0800BE14DE /* Sources */,
+				3886859428CE5E0800BE14DE /* Frameworks */,
+				3886859528CE5E0800BE14DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3886859C28CE5E0800BE14DE /* PBXTargetDependency */,
+			);
+			name = SaalAppTests;
+			productName = SaalAppTests;
+			productReference = 3886859728CE5E0800BE14DE /* SaalAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -261,6 +318,10 @@
 				TargetAttributes = {
 					384BD40328C9E4FF009C4922 = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					3886859628CE5E0800BE14DE = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 384BD40328C9E4FF009C4922;
 					};
 				};
 			};
@@ -278,6 +339,7 @@
 			projectRoot = "";
 			targets = (
 				384BD40328C9E4FF009C4922 /* SaalApp */,
+				3886859628CE5E0800BE14DE /* SaalAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -289,6 +351,13 @@
 			files = (
 				384BD41428C9E501009C4922 /* LaunchScreen.storyboard in Resources */,
 				384BD41128C9E501009C4922 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3886859528CE5E0800BE14DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +420,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3886859328CE5E0800BE14DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				388685A328CE5EF400BE14DE /* ObjectViewPresenterTests.swift in Sources */,
+				3886859A28CE5E0800BE14DE /* ObjectsListInteractorTests.swift in Sources */,
+				388685A528CE5F7A00BE14DE /* ObjectViewInteractorTests.swift in Sources */,
+				388685A128CE5ED700BE14DE /* ObjectsListPresenterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3886859C28CE5E0800BE14DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 384BD40328C9E4FF009C4922 /* SaalApp */;
+			targetProxy = 3886859B28CE5E0800BE14DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		384BD41228C9E501009C4922 /* LaunchScreen.storyboard */ = {
@@ -545,6 +633,44 @@
 			};
 			name = Release;
 		};
+		3886859D28CE5E0800BE14DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UM3QPHF8E3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.chenchik.SaalAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaalApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SaalApp";
+			};
+			name = Debug;
+		};
+		3886859E28CE5E0800BE14DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UM3QPHF8E3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.chenchik.SaalAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SaalApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SaalApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -562,6 +688,15 @@
 			buildConfigurations = (
 				384BD41928C9E501009C4922 /* Debug */,
 				384BD41A28C9E501009C4922 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3886859F28CE5E0800BE14DE /* Build configuration list for PBXNativeTarget "SaalAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3886859D28CE5E0800BE14DE /* Debug */,
+				3886859E28CE5E0800BE14DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
