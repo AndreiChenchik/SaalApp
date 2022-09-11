@@ -18,9 +18,6 @@
 		3886859028CE230200BE14DE /* ObjectTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886858F28CE230200BE14DE /* ObjectTypeCell.swift */; };
 		3886859228CE286D00BE14DE /* RelationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886859128CE286D00BE14DE /* RelationTableViewController.swift */; };
 		3886859A28CE5E0800BE14DE /* ObjectsListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886859928CE5E0800BE14DE /* ObjectsListInteractorTests.swift */; };
-		388685A128CE5ED700BE14DE /* ObjectsListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388685A028CE5ED700BE14DE /* ObjectsListPresenterTests.swift */; };
-		388685A328CE5EF400BE14DE /* ObjectViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388685A228CE5EF400BE14DE /* ObjectViewPresenterTests.swift */; };
-		388685A528CE5F7A00BE14DE /* ObjectViewInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388685A428CE5F7A00BE14DE /* ObjectViewInteractorTests.swift */; };
 		38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */; };
 		38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */; };
 		38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24128CA39040095715E /* ObjectsListModels.swift */; };
@@ -69,9 +66,6 @@
 		3886859128CE286D00BE14DE /* RelationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationTableViewController.swift; sourceTree = "<group>"; };
 		3886859728CE5E0800BE14DE /* SaalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SaalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3886859928CE5E0800BE14DE /* ObjectsListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractorTests.swift; sourceTree = "<group>"; };
-		388685A028CE5ED700BE14DE /* ObjectsListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListPresenterTests.swift; sourceTree = "<group>"; };
-		388685A228CE5EF400BE14DE /* ObjectViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewPresenterTests.swift; sourceTree = "<group>"; };
-		388685A428CE5F7A00BE14DE /* ObjectViewInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewInteractorTests.swift; sourceTree = "<group>"; };
 		38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractor.swift; sourceTree = "<group>"; };
 		38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListGraph.swift; sourceTree = "<group>"; };
 		38A4F24128CA39040095715E /* ObjectsListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListModels.swift; sourceTree = "<group>"; };
@@ -152,9 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				3886859928CE5E0800BE14DE /* ObjectsListInteractorTests.swift */,
-				388685A028CE5ED700BE14DE /* ObjectsListPresenterTests.swift */,
-				388685A228CE5EF400BE14DE /* ObjectViewPresenterTests.swift */,
-				388685A428CE5F7A00BE14DE /* ObjectViewInteractorTests.swift */,
 			);
 			path = SaalAppTests;
 			sourceTree = "<group>";
@@ -424,10 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				388685A328CE5EF400BE14DE /* ObjectViewPresenterTests.swift in Sources */,
 				3886859A28CE5E0800BE14DE /* ObjectsListInteractorTests.swift in Sources */,
-				388685A528CE5F7A00BE14DE /* ObjectViewInteractorTests.swift in Sources */,
-				388685A128CE5ED700BE14DE /* ObjectsListPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
