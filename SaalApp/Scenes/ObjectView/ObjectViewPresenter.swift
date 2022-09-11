@@ -1,7 +1,8 @@
 import UIKit
 
 protocol ObjectViewDisplayLogic: AnyObject {
-    func displayObject(viewModel: ObjectView.TableViewModel)
+    func displayObject(viewModel: ObjectView.ViewModel)
+    func selectRelation(viewModel: ObjectView.StartAddRelation.ViewModel)
 }
 
 final class ObjectViewPresenter {
@@ -11,73 +12,78 @@ final class ObjectViewPresenter {
 // MARK: - ObjectViewPresentationLogic
 
 extension ObjectViewPresenter: ObjectViewPresentationLogic {
-    typealias ViewModel = ObjectView.TableViewModel
-    typealias CellViewModel = ObjectView.CellViewModel
-    typealias Section = ObjectView.ListSection
+    typealias ViewModel = ObjectView.ViewModel
+    typealias CellModel = ViewModel.Cell
+    typealias Section = ViewModel.Section
 
-    func present(response: ObjectView.GetResponse) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CellViewModel>()
+    func present(response: ObjectView.Response) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CellModel>()
 
         snapshot.appendSections([.form])
-        let formCells = convert(model: response.object)
+        let formCells = convert(object: response.object)
         snapshot.appendItems(formCells)
 
         if !response.relatedObjects.isEmpty {
             snapshot.appendSections([.relation])
-            let relationCells = convert(model: response.relatedObjects)
+            let relationCells = convert(objects: response.relatedObjects)
             snapshot.appendItems(relationCells)
         }
 
-        let viewModel = ViewModel(snapshot: snapshot)
+        let viewModel = ViewModel(
+            snapshot: snapshot,
+            type: response.object.type.displayName
+        )
 
         DispatchQueue.main.async { [weak viewController] in
             viewController?.displayObject(viewModel: viewModel)
         }
     }
 
-    private func convert(model: Object) -> [CellViewModel] {
-        typealias FieldModel = ObjectView.FieldViewModel
-
-        var formFields = [CellViewModel]()
-
-        for field in ObjectView.FormField.allCases {
-            let fieldModel: FieldModel
-
-            switch field {
-            case .description:
-                fieldModel = FieldModel(
-                    field: field, text: model.description
-                )
-            case .type:
-                fieldModel = FieldModel(
-                    field: field, text: model.type.displayName
-                )
-            case .name:
-                fieldModel = FieldModel(
-                    field: field, text: model.name
-                )
-            }
-
-            formFields.append(.form(fieldModel))
-        }
-
-        return formFields
+    func present(response: ObjectView.StartAddRelation.Response) {
+        let relations = response.allObjects.map(relation(from:))
+        viewController?.selectRelation(viewModel: .init(relations: relations))
     }
 
-    private func convert(model: [Object]) -> [CellViewModel] {
-        typealias RelationModel = ObjectView.RelationViewModel
+    private func convert(object: Object) -> [CellModel] {
+        typealias FormCellModel = CellModel.Field
+        typealias FieldCategory = FormCellModel.Category
 
-        return model.map { object in
-            let title = "\(object.type.displayName): \(object.name)"
-            let description = "\(object.description)"
+        return FieldCategory.allCases.map { category in
+            let value: String
 
-            let viewModel = RelationModel(
-                id: object.id,
-                title: title,
-                description: description
-            )
+            switch category {
+            case .description:
+                value = object.description
+            case .type:
+                value = object.type.displayName
 
-            return CellViewModel.relation(viewModel)
+            case .name:
+                value = object.name
+            }
+
+            let formCell = FormCellModel(category: category, value: value)
+
+            return CellModel.form(formCell)
         }
+    }
+
+    private func convert(objects: [Object]) -> [CellModel] {
+        typealias RelationModel = CellModel.Relation
+
+        return objects.map { object in
+            let viewModel = relation(from: object)
+            return CellModel.relation(viewModel)
+        }
+    }
+
+    private func relation(from object: Object) -> CellModel.Relation {
+        let title = "\(object.type.displayName): \(object.name)"
+        let description = "\(object.description)"
+
+        return CellModel.Relation(
+            id: object.id,
+            title: title,
+            description: description
+        )
     }
 }

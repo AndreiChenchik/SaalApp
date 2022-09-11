@@ -61,3 +61,4 @@ The implementation should be done in Swift 5, UIKit framework and Clean Swift ar
     - `ObjectsRepository` protocol created to provide option switch from different storage implementation (CoreData, Files, etc) 
     - `FileObjectsRepository` storage implemented to speedup delivery 
     - `Graph` objects added to Scenes for cleaner instantiation
+    - In TableViews `DataSources` extracted into separate file because it's a little bit long, but all *interaction* logic passed to ViewController to satisfy VIP structure: `onTableItemDelete` closure.

@@ -8,12 +8,12 @@ struct ObjectViewGraph {
         let presenter = ObjectViewPresenter()
         let objectsWorker = ObjectsWorker(objectsRepository: objectsRepository)
         let interactor = ObjectViewInteractor(
-            presenter: presenter, objectsWorker: objectsWorker
+            objectId: objectId,
+            presenter: presenter,
+            objectsWorker: objectsWorker
         )
 
-        let viewController = ObjectViewViewController(
-            objectId: objectId, interactor: interactor
-        )
+        let viewController = ObjectViewViewController(interactor: interactor)
         presenter.viewController = viewController
 
         return viewController

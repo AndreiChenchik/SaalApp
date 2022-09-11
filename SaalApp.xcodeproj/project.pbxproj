@@ -14,6 +14,9 @@
 		384BD41428C9E501009C4922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384BD41228C9E501009C4922 /* LaunchScreen.storyboard */; };
 		384BD41F28CA00AD009C4922 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD41E28CA00AD009C4922 /* Object.swift */; };
 		384BD42328CA0F79009C4922 /* ObjectsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384BD42228CA0F79009C4922 /* ObjectsListPresenter.swift */; };
+		3886858E28CDE32E00BE14DE /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886858D28CDE32E00BE14DE /* UIView+Extensions.swift */; };
+		3886859028CE230200BE14DE /* ObjectTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886858F28CE230200BE14DE /* ObjectTypeCell.swift */; };
+		3886859228CE286D00BE14DE /* RelationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3886859128CE286D00BE14DE /* RelationTableViewController.swift */; };
 		38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */; };
 		38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */; };
 		38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F24128CA39040095715E /* ObjectsListModels.swift */; };
@@ -28,6 +31,11 @@
 		38A4F25828CB2E9F0095715E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F25728CB2E9F0095715E /* Date+Extensions.swift */; };
 		38A4F25A28CB33190095715E /* FilesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F25928CB33190095715E /* FilesService.swift */; };
 		38A4F25C28CB33600095715E /* FileObjectsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F25B28CB33600095715E /* FileObjectsRepository.swift */; };
+		38A4F26028CB80530095715E /* ObjectViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F25F28CB80530095715E /* ObjectViewDataSource.swift */; };
+		38A4F26228CB81A00095715E /* ObjectRelationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F26128CB81A00095715E /* ObjectRelationCell.swift */; };
+		38A4F26428CB820C0095715E /* ObjectTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F26328CB820C0095715E /* ObjectTextFieldCell.swift */; };
+		38A4F26728CB899B0095715E /* ObjectsListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F26628CB899B0095715E /* ObjectsListDataSource.swift */; };
+		38A4F26A28CB8BEC0095715E /* ObjectsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A4F26928CB8BEC0095715E /* ObjectsListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +50,9 @@
 		384BD41D28C9F7A8009C4922 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		384BD41E28CA00AD009C4922 /* Object.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		384BD42228CA0F79009C4922 /* ObjectsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListPresenter.swift; sourceTree = "<group>"; };
+		3886858D28CDE32E00BE14DE /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		3886858F28CE230200BE14DE /* ObjectTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTypeCell.swift; sourceTree = "<group>"; };
+		3886859128CE286D00BE14DE /* RelationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationTableViewController.swift; sourceTree = "<group>"; };
 		38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListInteractor.swift; sourceTree = "<group>"; };
 		38A4F23F28CA379E0095715E /* ObjectsListGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListGraph.swift; sourceTree = "<group>"; };
 		38A4F24128CA39040095715E /* ObjectsListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListModels.swift; sourceTree = "<group>"; };
@@ -56,6 +67,11 @@
 		38A4F25728CB2E9F0095715E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		38A4F25928CB33190095715E /* FilesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesService.swift; sourceTree = "<group>"; };
 		38A4F25B28CB33600095715E /* FileObjectsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileObjectsRepository.swift; sourceTree = "<group>"; };
+		38A4F25F28CB80530095715E /* ObjectViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectViewDataSource.swift; sourceTree = "<group>"; };
+		38A4F26128CB81A00095715E /* ObjectRelationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectRelationCell.swift; sourceTree = "<group>"; };
+		38A4F26328CB820C0095715E /* ObjectTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTextFieldCell.swift; sourceTree = "<group>"; };
+		38A4F26628CB899B0095715E /* ObjectsListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListDataSource.swift; sourceTree = "<group>"; };
+		38A4F26928CB8BEC0095715E /* ObjectsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +140,8 @@
 		38A4F23C28CA358C0095715E /* ObjectsList */ = {
 			isa = PBXGroup;
 			children = (
+				38A4F26828CB8BBD0095715E /* Components */,
+				38A4F26528CB89820095715E /* Helpers */,
 				384BD40B28C9E4FF009C4922 /* ObjectsListViewController.swift */,
 				384BD42228CA0F79009C4922 /* ObjectsListPresenter.swift */,
 				38A4F23D28CA35A80095715E /* ObjectsListInteractor.swift */,
@@ -155,6 +173,8 @@
 		38A4F24928CA83310095715E /* ObjectView */ = {
 			isa = PBXGroup;
 			children = (
+				38A4F25E28CB80210095715E /* Components */,
+				38A4F25D28CB80160095715E /* Helpers */,
 				38A4F24A28CA83670095715E /* ObjectViewViewController.swift */,
 				38A4F24C28CA87E10095715E /* ObjectViewModels.swift */,
 				38A4F24E28CB09460095715E /* ObjectViewPresenter.swift */,
@@ -168,8 +188,44 @@
 			isa = PBXGroup;
 			children = (
 				38A4F25728CB2E9F0095715E /* Date+Extensions.swift */,
+				3886858D28CDE32E00BE14DE /* UIView+Extensions.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		38A4F25D28CB80160095715E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F25F28CB80530095715E /* ObjectViewDataSource.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		38A4F25E28CB80210095715E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F26128CB81A00095715E /* ObjectRelationCell.swift */,
+				38A4F26328CB820C0095715E /* ObjectTextFieldCell.swift */,
+				3886858F28CE230200BE14DE /* ObjectTypeCell.swift */,
+				3886859128CE286D00BE14DE /* RelationTableViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		38A4F26528CB89820095715E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F26628CB899B0095715E /* ObjectsListDataSource.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		38A4F26828CB8BBD0095715E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				38A4F26928CB8BEC0095715E /* ObjectsListCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,17 +323,25 @@
 			files = (
 				38A4F23E28CA35A80095715E /* ObjectsListInteractor.swift in Sources */,
 				38A4F24D28CA87E10095715E /* ObjectViewModels.swift in Sources */,
+				3886858E28CDE32E00BE14DE /* UIView+Extensions.swift in Sources */,
+				38A4F26028CB80530095715E /* ObjectViewDataSource.swift in Sources */,
 				38A4F25128CB09BF0095715E /* ObjectViewInteractor.swift in Sources */,
+				38A4F26728CB899B0095715E /* ObjectsListDataSource.swift in Sources */,
 				38A4F24228CA39040095715E /* ObjectsListModels.swift in Sources */,
+				38A4F26A28CB8BEC0095715E /* ObjectsListCell.swift in Sources */,
 				38A4F25528CB1C270095715E /* ObjectViewGraph.swift in Sources */,
 				38A4F25328CB1B720095715E /* ObjectsListRouter.swift in Sources */,
 				38A4F25C28CB33600095715E /* FileObjectsRepository.swift in Sources */,
 				38A4F24B28CA83670095715E /* ObjectViewViewController.swift in Sources */,
 				384BD42328CA0F79009C4922 /* ObjectsListPresenter.swift in Sources */,
+				38A4F26228CB81A00095715E /* ObjectRelationCell.swift in Sources */,
 				38A4F25828CB2E9F0095715E /* Date+Extensions.swift in Sources */,
 				384BD40C28C9E4FF009C4922 /* ObjectsListViewController.swift in Sources */,
+				38A4F26428CB820C0095715E /* ObjectTextFieldCell.swift in Sources */,
 				384BD40828C9E4FF009C4922 /* AppDelegate.swift in Sources */,
+				3886859028CE230200BE14DE /* ObjectTypeCell.swift in Sources */,
 				38A4F24628CA5A670095715E /* ObjectsWorker.swift in Sources */,
+				3886859228CE286D00BE14DE /* RelationTableViewController.swift in Sources */,
 				38A4F24828CA5C7D0095715E /* InMemoryObjectsRepository.swift in Sources */,
 				38A4F24028CA379E0095715E /* ObjectsListGraph.swift in Sources */,
 				384BD41F28CA00AD009C4922 /* Object.swift in Sources */,
