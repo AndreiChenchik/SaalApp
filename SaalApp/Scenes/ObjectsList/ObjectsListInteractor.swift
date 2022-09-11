@@ -1,13 +1,13 @@
 import UIKit
 
-protocol ObjectsListPresentationLogic {
+protocol ObjectsListPresentationLogic: AnyObject {
     func present(response: ObjectsList.Response)
     func displayObject(response: ObjectsList.AddObject.Response)
 }
 
 final class ObjectsListInteractor: NSObject {
-    let presenter: ObjectsListPresentationLogic
-    let objectsWorker: ObjectsWorker
+    private let presenter: ObjectsListPresentationLogic
+    private let objectsWorker: ObjectsWorker
 
     init(
         presenter: ObjectsListPresentationLogic,
@@ -24,8 +24,8 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
     func addMock(request: ObjectsList.MockObjects.Request) {
         objectsWorker.addObjects(
             objects: Object.sampleObjects
-        ) { [weak self] objects in
-            self?.presenter.present(response: .init(objects: objects))
+        ) { [weak presenter] objects in
+            presenter?.present(response: .init(objects: objects))
         }
     }
 
@@ -36,8 +36,8 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
             type: request.type
         )
 
-        objectsWorker.addObject(object: object) { [weak self] object in
-            self?.presenter.displayObject(response: .init(objectId: object.id))
+        objectsWorker.addObject(object: object) { [weak presenter] object in
+            presenter?.displayObject(response: .init(objectId: object.id))
         }
     }
 
@@ -73,8 +73,8 @@ extension ObjectsListInteractor: ObjectsListBusinessLogic {
 
     func deleteObject(request: ObjectsList.DeleteObject.Request) {
         let id = request.objectId
-        objectsWorker.deleteObject(id: id) { [weak self] objects in
-            self?.presenter.present(response: .init(objects: objects))
+        objectsWorker.deleteObject(id: id) { [weak presenter] objects in
+            presenter?.present(response: .init(objects: objects))
         }
     }
 }

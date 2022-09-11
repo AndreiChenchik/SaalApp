@@ -6,8 +6,8 @@ protocol ObjectViewPresentationLogic {
 }
 
 final class ObjectViewInteractor {
-    let presenter: ObjectViewPresentationLogic
-    let objectsWorker: ObjectsWorker
+    private let presenter: ObjectViewPresentationLogic
+    private let objectsWorker: ObjectsWorker
 
     let objectId: UUID
 
