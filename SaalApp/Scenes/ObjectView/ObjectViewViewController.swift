@@ -146,8 +146,7 @@ extension ObjectViewViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let request = ObjectView.LoadObject.Request()
-        interactor.loadObject(request: request)
+        interactor.loadObject(request: .init())
     }
 }
 
@@ -165,8 +164,7 @@ extension ObjectViewViewController: UITableViewDelegate, UITextFieldDelegate {
     ) -> RelationDeleteAction {
         return { viewModel in
             let id = viewModel.id
-            let request = ObjectView.RemoveRelation.Request(relationId: id)
-            interactor.removeRelation(request: request)
+            interactor.removeRelation(request: .init(relationId: id))
         }
     }
 
@@ -196,11 +194,7 @@ extension ObjectViewViewController: UITableViewDelegate, UITextFieldDelegate {
             return false
         }
 
-        let request = ObjectView.UpdateField.Request(
-            category: category, value: value
-        )
-
-        interactor.updateField(request: request)
+        interactor.updateField(request: .init(category: category, value: value))
 
         return true
     }
@@ -217,8 +211,7 @@ extension ObjectViewViewController: ObjectViewDisplayLogic {
         let relationController = RelationTableViewController(
             relations: viewModel.relations
         ) { [weak self] id in
-            let request = ObjectView.AddRelation.Request(relationId: id)
-            self?.interactor.addRelation(request: request)
+            self?.interactor.addRelation(request: .init(relationId: id))
         }
 
         present(relationController, animated: true)
