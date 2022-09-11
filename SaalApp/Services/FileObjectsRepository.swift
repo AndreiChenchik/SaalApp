@@ -18,7 +18,7 @@ final class FileObjectsRepository: ObjectsRepository {
         {
             self.objects = objects
         } else {
-            self.objects = Object.sampleObjects
+            self.objects = []
             persistObjects(objects)
         }
     }
