@@ -1,11 +1,7 @@
 import Foundation
 
 final class InMemoryObjectsRepository: ObjectsRepository {
-    private var objects: [Object]
-
-    init() {
-        self.objects = Object.sampleObjects
-    }
+    private var objects: [Object] = []
 
     func fetchObjects(
         filter: @escaping (Object) -> Bool,

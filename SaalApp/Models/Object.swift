@@ -28,7 +28,7 @@ extension Object {
             let name = "\(type.displayName.prefix(1))\(number)"
             let description = "Created on \(Date().dateTimeString)"
 
-            var object = Object(
+            let object = Object(
                 name: name,
                 description: description,
                 type: type
