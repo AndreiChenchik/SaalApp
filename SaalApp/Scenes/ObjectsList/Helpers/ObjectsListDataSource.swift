@@ -1,20 +1,21 @@
 import UIKit
 
-typealias OLSection = ObjectsList.ListSection
-typealias OLViewModel = ObjectsList.CellViewModel
-typealias OLDataSource = UITableViewDiffableDataSource<OLSection, OLViewModel>
+typealias OLDataSource = UITableViewDiffableDataSource<
+    ObjectsList.ViewModel.Section,
+    ObjectsList.ViewModel.Cell
+>
 
 final class ObjectsListDataSource: OLDataSource {
     init(
         tableView: UITableView,
         cellProvider: @escaping OLDataSource.CellProvider,
-        onObjectDelete: @escaping (OLViewModel) -> Void
+        onObjectDelete: @escaping (ObjectsList.ViewModel.Cell) -> Void
     ) {
         self.onObjectDelete = onObjectDelete
         super.init(tableView: tableView, cellProvider: cellProvider)
     }
 
-    private var onObjectDelete: (OLViewModel) -> Void
+    private var onObjectDelete: (ObjectsList.ViewModel.Cell) -> Void
 
     override func tableView(
         _ tableView: UITableView, canEditRowAt indexPath: IndexPath

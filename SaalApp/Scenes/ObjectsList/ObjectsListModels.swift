@@ -35,14 +35,15 @@ enum ObjectsList {
         let objects: [Object]
     }
 
-    struct CellViewModel: Hashable, Identifiable {
-        let id: UUID
-        let title: String
-        let description: String
-    }
-
-    enum ListSection { case main }
     struct ViewModel {
-        let snapshot: NSDiffableDataSourceSnapshot<ListSection, CellViewModel>
+        enum Section { case main }
+
+        struct Cell: Hashable, Identifiable {
+            let id: UUID
+            let title: String
+            let description: String
+        }
+
+        let snapshot: NSDiffableDataSourceSnapshot<Section, Cell>
     }
 }

@@ -16,11 +16,11 @@ final class ObjectsListPresenter {
 
 extension ObjectsListPresenter: ObjectsListPresentationLogic {
     typealias ViewModel = ObjectsList.ViewModel
-    typealias CellViewModel = ObjectsList.CellViewModel
-    typealias Section = ObjectsList.ListSection
+    typealias Cell = ViewModel.Cell
+    typealias Section = ViewModel.Section
 
     func present(response: ObjectsList.Response) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CellViewModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Cell>()
         snapshot.appendSections([.main])
 
         let cellsData = response.objects.map(convert)
@@ -39,12 +39,10 @@ extension ObjectsListPresenter: ObjectsListPresentationLogic {
         }
     }
 
-    private func convert(model: Object) -> CellViewModel {
+    private func convert(model: Object) -> Cell {
         let title = "\(model.type.displayName): \(model.name)"
         let description = "\(model.description)"
 
-        return CellViewModel(
-            id: model.id, title: title, description: description
-        )
+        return Cell(id: model.id, title: title, description: description)
     }
 }

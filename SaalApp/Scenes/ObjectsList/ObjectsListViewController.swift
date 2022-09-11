@@ -128,7 +128,7 @@ final class ObjectsListViewController: UIViewController {
 // MARK: - UI Events
 
 extension ObjectsListViewController: UITableViewDelegate, UISearchResultsUpdating {
-    typealias ObjectDeleteAction = (ObjectsList.CellViewModel) -> Void
+    typealias ObjectDeleteAction = (ObjectsList.ViewModel.Cell) -> Void
     private static func getObjectDeleteAction(
         interactor: Interactor
     ) -> ObjectDeleteAction {
