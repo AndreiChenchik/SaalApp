@@ -17,6 +17,8 @@ final class RelationTableViewController: UITableViewController {
     }
 
     override func viewDidLoad() {
+        title = "Select related object"
+
         tableView.register(
             ObjectRelationCell.self,
             forCellReuseIdentifier: ObjectRelationCell.identifier

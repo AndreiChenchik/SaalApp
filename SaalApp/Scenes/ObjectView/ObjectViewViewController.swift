@@ -208,6 +208,10 @@ extension ObjectViewViewController: ObjectViewDisplayLogic {
             self?.interactor.addRelation(request: .init(relationId: id))
         }
 
-        present(relationController, animated: true)
+        let navigationController = UINavigationController(
+            rootViewController: relationController
+        )
+
+        present(navigationController, animated: true)
     }
 }
